@@ -1,0 +1,47 @@
+.c-alert { }
+
+.c-alert--success {
+  background-color: var(--semantic-success);
+  color: #fff;
+  padding: 1rem;
+  border: 1px solid var(--semantic-success);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.c-alert--error {
+  background-color: var(--semantic-error);
+  color: #fff;
+  padding: 1rem;
+  border: 1px solid var(--semantic-error);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.c-alert--warning {
+  background-color: var(--semantic-warning);
+  color: #fff;
+  padding: 1rem;
+  border: 1px solid var(--semantic-warning);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.c-alert--info {
+  background-color: var(--semantic-info);
+  color: #fff;
+  padding: 1rem;
+  border: 1px solid var(--semantic-info);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.c-alert-icon { }
+.c-alert-message { }
+.c-alert-close { }
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 480px) {
+}
