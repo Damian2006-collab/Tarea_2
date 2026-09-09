@@ -11,6 +11,7 @@ Dami's Burguer — a static multi-page marketing site for a burger restaurant, b
 - `npm run build` — compiles `ts/**/*.ts` to `js/` via `tsc`. Fails with `TS18003: No inputs were found` until at least one `.ts` file exists in `ts/`.
 - No dev server script is defined. Serve the static files with any static server (e.g. `python -m http.server 8000`) and open the HTML files directly — no build step is required to view any page.
 - No lint or test commands are configured. The `test` script in `package.json` is the default npm placeholder, not a real test runner.
+- `dist/` is a generated deployable copy, not a build the tooling produces automatically — regenerate it by running `npm run build` then copying the six `*.html` files, `robots.txt`, `css/*.css`, and `js/*.js` into `dist/` (skip `ts/`, `node_modules/`, `package*.json`, `tsconfig.json`, `.claude/`, and the `.md` docs — those aren't needed to serve the site). It's gitignored; Netlify currently deploys straight from the repo root (publish directory `.`), so `dist/` isn't wired into the live deploy — it exists for anyone who wants a standalone folder to drag-and-drop deploy or serve elsewhere.
 
 ## Architecture
 
