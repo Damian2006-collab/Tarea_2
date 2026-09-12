@@ -21,10 +21,10 @@
 
     body {
       margin: 0;
-      font-family: system-ui, sans-serif;
+      font-family: var(--font-family-base);
       line-height: 1.5;
-      color: #1f2933;
-      background: #f5f6f8;
+      color: var(--color-text);
+      background: var(--color-bg);
     }
 
     .layout {
@@ -34,14 +34,26 @@
     }
 
     .layout__sidebar {
-      border-bottom: 1px solid #d7dbe0;
-      background: #ffffff;
-      padding: 1rem;
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-surface);
+      padding: var(--space-6) var(--space-5);
+    }
+
+    .layout__sidebar .eyebrow {
+      display: block;
+      margin-bottom: var(--space-1);
+      font-size: var(--font-size-xs);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-primary);
     }
 
     .layout__sidebar h1 {
-      font-size: 1.1rem;
-      margin: 0 0 1rem;
+      font-size: var(--font-size-md);
+      font-weight: 700;
+      margin: 0 0 var(--space-6);
+      color: var(--color-text);
     }
 
     .layout__sidebar nav ul {
@@ -50,66 +62,84 @@
       padding: 0;
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: var(--space-2);
     }
 
     .layout__sidebar nav a {
       display: inline-block;
-      padding: 0.4rem 0.75rem;
-      border-radius: 6px;
-      background: #eef1f4;
-      color: #1f2933;
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-sm);
+      color: var(--color-text-muted);
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      transition: background-color 0.15s ease, color 0.15s ease;
     }
 
     .layout__sidebar nav a:hover {
-      background: #dfe4e9;
+      background: var(--color-bg);
+      color: var(--color-text);
     }
 
     .layout__main {
-      padding: 1.5rem 1rem 4rem;
+      padding: var(--space-7) var(--space-5) var(--space-10);
+      counter-reset: section;
     }
 
     .playground-section {
       max-width: 72rem;
-      margin: 0 auto 3rem;
-      padding-bottom: 2.5rem;
-      border-bottom: 1px solid #e2e5e9;
+      margin: 0 auto var(--space-9);
+      padding-bottom: var(--space-8);
+      border-bottom: 1px solid var(--color-border);
     }
 
     .playground-section:last-child {
       border-bottom: none;
+      margin-bottom: 0;
     }
 
     .playground-section h2 {
-      font-size: 1.4rem;
-      margin: 0 0 1rem;
+      font-size: var(--font-size-lg);
+      font-weight: 700;
+      margin: 0 0 var(--space-6);
+    }
+
+    .playground-section h2::before {
+      counter-increment: section;
+      content: counter(section, decimal-leading-zero);
+      display: block;
+      margin-bottom: var(--space-2);
+      font-size: var(--font-size-xs);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--color-primary);
     }
 
     .playground-section__grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1.5rem;
+      gap: var(--space-6);
     }
 
     .playground-section__demo,
     .playground-section__behavior {
-      background: #ffffff;
-      border: 1px solid #e2e5e9;
-      border-radius: 8px;
-      padding: 1.25rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      padding: var(--space-6);
     }
 
     .playground-section__demo {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: var(--space-5);
     }
 
     .playground-section__behavior h3 {
-      font-size: 1rem;
-      margin: 0 0 0.75rem;
+      font-size: var(--font-size-base);
+      font-weight: 700;
+      margin: 0 0 var(--space-4);
     }
 
     .playground-section__behavior dl {
@@ -118,7 +148,8 @@
 
     .playground-section__behavior dt {
       font-weight: 700;
-      margin-top: 0.75rem;
+      font-size: var(--font-size-sm);
+      margin-top: var(--space-4);
     }
 
     .playground-section__behavior dt:first-child {
@@ -126,9 +157,17 @@
     }
 
     .playground-section__behavior dd {
-      margin: 0.15rem 0 0;
-      color: #52606d;
-      font-size: 0.9rem;
+      margin: var(--space-1) 0 0;
+      color: var(--color-text-muted);
+      font-size: var(--font-size-sm);
+    }
+
+    .playground-section__behavior code {
+      font-family: ui-monospace, monospace;
+      font-size: 0.85em;
+      background: var(--color-bg);
+      padding: 0.1em 0.4em;
+      border-radius: 4px;
     }
 
     .menu-demo {
@@ -139,18 +178,18 @@
     .demo-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
+      gap: var(--space-3);
       align-items: center;
     }
 
     @media (min-width: 900px) {
       .layout {
-        grid-template-columns: 16rem 1fr;
+        grid-template-columns: 17rem 1fr;
       }
 
       .layout__sidebar {
         border-bottom: none;
-        border-right: 1px solid #d7dbe0;
+        border-right: 1px solid var(--color-border);
         position: sticky;
         top: 0;
         height: 100vh;
@@ -159,6 +198,10 @@
 
       .layout__sidebar nav ul {
         flex-direction: column;
+      }
+
+      .layout__sidebar nav a {
+        display: block;
       }
 
       .playground-section__grid {
@@ -181,6 +224,7 @@
 <body>
   <div class="layout">
     <aside class="layout__sidebar">
+      <span class="eyebrow">Backoffice</span>
       <h1>Componentes</h1>
       <nav aria-label="Componentes de interacción">
         <ul>

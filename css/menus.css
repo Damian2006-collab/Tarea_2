@@ -1,5 +1,42 @@
-.c-menu-account { }
-.c-menu-account-toggle { }
+.c-menu-account {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  left: 0;
+  z-index: 20;
+  min-width: 180px;
+  list-style: none;
+  margin: 0;
+  padding: var(--space-2);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.c-menu-account li {
+  display: block;
+}
+
+.c-menu-account a,
+.c-menu-account button {
+  display: block;
+  width: 100%;
+  padding: var(--space-3);
+  border: none;
+  border-radius: var(--radius-sm);
+  background: none;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.c-menu-account a:hover,
+.c-menu-account button:hover {
+  background: var(--color-bg);
+}
 
 @media (max-width: 768px) {
 }

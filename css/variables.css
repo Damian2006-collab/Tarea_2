@@ -3,4 +3,39 @@
   --semantic-success: #27ae60;
   --semantic-warning: #e67e22;
   --semantic-info: #3498db;
+
+  --color-primary: oklch(0.52 0.19 275);
+  --color-primary-hover: oklch(0.46 0.19 275);
+  --color-text: #1f2933;
+  --color-text-muted: #52606d;
+  --color-bg: #f5f6f8;
+  --color-surface: #ffffff;
+  --color-border: #e2e5e9;
+  --color-border-strong: #d7dbe0;
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 48px;
+  --space-10: 64px;
+
+  --font-family-base: system-ui, -apple-system, sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.9rem;
+  --font-size-base: 1rem;
+  --font-size-md: 1.1rem;
+  --font-size-lg: 1.4rem;
+  --font-size-xl: 1.75rem;
+  --font-size-xxl: 2.25rem;
+
+  --shadow-sm: 0 1px 2px rgba(31, 41, 51, 0.06);
+  --shadow-md: 0 4px 16px rgba(31, 41, 51, 0.08);
 }
