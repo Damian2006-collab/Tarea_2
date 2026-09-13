@@ -182,6 +182,15 @@
       align-items: center;
     }
 
+    .demo-row-label {
+      margin: 0;
+      font-size: var(--font-size-xs);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+
     @media (min-width: 900px) {
       .layout {
         grid-template-columns: 17rem 1fr;
@@ -290,11 +299,20 @@
         <h2 id="titulo-botones">Botones</h2>
         <div class="playground-section__grid">
           <div class="playground-section__demo">
+            <p class="demo-row-label">Habilitado — idle / hover / pressed son interactivos</p>
             <div class="demo-row">
               <button type="button" class="c-btn c-btn--primary">Guardar</button>
               <button type="button" class="c-btn c-btn--secondary">Cancelar</button>
               <button type="button" class="c-btn c-btn--destructive">Eliminar</button>
               <button type="button" class="c-btn c-btn--icon" aria-label="Más opciones">⋮</button>
+            </div>
+
+            <p class="demo-row-label">Deshabilitado</p>
+            <div class="demo-row">
+              <button type="button" class="c-btn c-btn--primary" disabled>Guardar</button>
+              <button type="button" class="c-btn c-btn--secondary" disabled>Cancelar</button>
+              <button type="button" class="c-btn c-btn--destructive" disabled>Eliminar</button>
+              <button type="button" class="c-btn c-btn--icon" disabled aria-label="Más opciones">⋮</button>
             </div>
           </div>
 
