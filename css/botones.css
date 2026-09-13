@@ -3,19 +3,28 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
-  padding: var(--space-3) var(--space-5);
+  padding: var(--space-3) var(--space-6);
   border-radius: var(--radius-md);
   border: 1px solid transparent;
   font-family: var(--font-family-base);
   font-size: var(--font-size-sm);
   font-weight: 600;
+  letter-spacing: 0.01em;
   line-height: 1;
   cursor: pointer;
-  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+  box-shadow: var(--shadow-sm);
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.c-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .c-btn:active {
-  transform: translateY(1px);
+  transform: translateY(0);
+  box-shadow: none;
+  transition-duration: 0.05s;
 }
 
 .c-btn:focus-visible {
@@ -27,23 +36,26 @@
   opacity: 0.5;
   cursor: not-allowed;
   transform: none;
+  box-shadow: none;
 }
 
 .c-btn--primary {
-  background: var(--color-primary);
+  background: linear-gradient(180deg, var(--color-primary), var(--color-primary-hover));
   color: #fff;
-  border-color: var(--color-primary);
+  border-color: var(--color-primary-hover);
+  font-weight: 700;
+  box-shadow: 0 2px 8px color-mix(in oklch, var(--color-primary) 35%, transparent);
 }
 
 .c-btn--primary:hover {
-  background: var(--color-primary-hover);
-  border-color: var(--color-primary-hover);
+  box-shadow: 0 8px 20px color-mix(in oklch, var(--color-primary) 45%, transparent);
 }
 
 .c-btn--primary:disabled,
 .c-btn--primary:disabled:hover {
   background: var(--color-primary);
   border-color: var(--color-primary);
+  box-shadow: none;
 }
 
 .c-btn--secondary {
@@ -54,44 +66,50 @@
 
 .c-btn--secondary:hover {
   background: var(--color-bg);
+  border-color: var(--color-text-muted);
 }
 
 .c-btn--secondary:disabled,
 .c-btn--secondary:disabled:hover {
   background: var(--color-surface);
   border-color: var(--color-border-strong);
+  box-shadow: none;
 }
 
 .c-btn--destructive {
-  background: var(--semantic-error);
+  background: linear-gradient(180deg, var(--semantic-error), #a3301f);
   color: #fff;
-  border-color: var(--semantic-error);
+  border-color: #a3301f;
+  font-weight: 700;
+  box-shadow: 0 2px 8px color-mix(in oklch, var(--semantic-error) 35%, transparent);
 }
 
 .c-btn--destructive:hover {
-  background: #a3301f;
-  border-color: #a3301f;
+  box-shadow: 0 8px 20px color-mix(in oklch, var(--semantic-error) 45%, transparent);
 }
 
 .c-btn--destructive:disabled,
 .c-btn--destructive:disabled:hover {
   background: var(--semantic-error);
   border-color: var(--semantic-error);
+  box-shadow: none;
 }
 
 .c-btn--icon {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   padding: 0;
+  border-radius: 50%;
   background: var(--color-surface);
   color: var(--color-text-muted);
   border-color: var(--color-border);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-md);
 }
 
 .c-btn--icon:hover {
   background: var(--color-bg);
-  color: var(--color-text);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 .c-btn--icon:disabled,
@@ -99,6 +117,7 @@
   background: var(--color-surface);
   color: var(--color-text-muted);
   border-color: var(--color-border);
+  box-shadow: none;
 }
 
 @media (max-width: 768px) {
