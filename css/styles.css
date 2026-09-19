@@ -977,6 +977,25 @@
     margin-top: 0.25rem;
   }
 
+  .password-strength {
+    min-height: 1.1em;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    margin-top: 0.35rem;
+  }
+
+  .password-strength--weak {
+    color: var(--color-accent);
+  }
+
+  .password-strength--medium {
+    color: var(--color-cheese);
+  }
+
+  .password-strength--strong {
+    color: var(--color-lettuce);
+  }
+
   .form-group input[aria-invalid="true"],
   .form-group textarea[aria-invalid="true"] {
     border-color: var(--color-accent);

@@ -9,8 +9,47 @@
         return;
     const feedback = maybeFeedback;
     const MIN_PASSWORD_LENGTH = 8;
+    const MIN_AGE = 13;
+    const MAX_AGE = 120;
+    const STRENGTH_LABEL = {
+        weak: 'Fuerza: débil',
+        medium: 'Fuerza: media',
+        strong: 'Fuerza: fuerte',
+    };
     function isValidEmail(value) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+    }
+    function getPasswordStrength(value) {
+        let score = 0;
+        if (value.length >= 8)
+            score++;
+        if (value.length >= 12)
+            score++;
+        if (/[a-z]/.test(value))
+            score++;
+        if (/[A-Z]/.test(value))
+            score++;
+        if (/[0-9]/.test(value))
+            score++;
+        if (/[^A-Za-z0-9]/.test(value))
+            score++;
+        if (score <= 2)
+            return 'weak';
+        if (score <= 4)
+            return 'medium';
+        return 'strong';
+    }
+    function getAge(dobValue) {
+        const dob = new Date(dobValue);
+        if (Number.isNaN(dob.getTime()))
+            return null;
+        const today = new Date();
+        let age = today.getFullYear() - dob.getFullYear();
+        const monthDiff = today.getMonth() - dob.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+            age--;
+        }
+        return age;
     }
     function setFieldError(field, message) {
         field.setAttribute('aria-invalid', message ? 'true' : 'false');
@@ -22,10 +61,28 @@
         if (errorEl)
             errorEl.textContent = message;
     }
+    function updateStrengthMeter(value) {
+        const meter = document.getElementById('password-strength');
+        if (!meter)
+            return;
+        meter.classList.remove('password-strength--weak', 'password-strength--medium', 'password-strength--strong');
+        if (!value) {
+            meter.textContent = '';
+            return;
+        }
+        const strength = getPasswordStrength(value);
+        meter.textContent = STRENGTH_LABEL[strength];
+        meter.classList.add(`password-strength--${strength}`);
+    }
+    const passwordInput = form.querySelector('#password');
+    passwordInput?.addEventListener('input', () => {
+        updateStrengthMeter(passwordInput.value);
+    });
     function validate() {
         let valid = true;
         const nombre = form.querySelector('#nombre');
         const email = form.querySelector('#email');
+        const fechaNacimiento = form.querySelector('#fecha-nacimiento');
         const password = form.querySelector('#password');
         const confirmar = form.querySelector('#confirmar-password');
         if (nombre) {
@@ -50,6 +107,26 @@
                 setFieldError(email, '');
             }
         }
+        if (fechaNacimiento) {
+            if (!fechaNacimiento.value) {
+                setFieldError(fechaNacimiento, 'Ingresa tu fecha de nacimiento.');
+                valid = false;
+            }
+            else {
+                const age = getAge(fechaNacimiento.value);
+                if (age === null || age < 0 || age > MAX_AGE) {
+                    setFieldError(fechaNacimiento, 'Ingresa una fecha de nacimiento válida.');
+                    valid = false;
+                }
+                else if (age < MIN_AGE) {
+                    setFieldError(fechaNacimiento, `Debes tener al menos ${MIN_AGE} años para registrarte.`);
+                    valid = false;
+                }
+                else {
+                    setFieldError(fechaNacimiento, '');
+                }
+            }
+        }
         if (password) {
             if (!password.value) {
                 setFieldError(password, 'Crea una contraseña.');
@@ -59,9 +136,14 @@
                 setFieldError(password, `La contraseña debe tener al menos ${MIN_PASSWORD_LENGTH} caracteres.`);
                 valid = false;
             }
+            else if (getPasswordStrength(password.value) === 'weak') {
+                setFieldError(password, 'La contraseña es débil. Combina mayúsculas, minúsculas, números y símbolos.');
+                valid = false;
+            }
             else {
                 setFieldError(password, '');
             }
+            updateStrengthMeter(password.value);
         }
         if (confirmar) {
             if (!confirmar.value) {
@@ -86,6 +168,7 @@
             feedback.textContent = '¡Cuenta creada correctamente! Ya puedes iniciar sesión.';
             feedback.classList.add('form-feedback--success');
             form.reset();
+            updateStrengthMeter('');
         }
         else {
             feedback.textContent = 'Revisa los campos marcados en rojo.';
