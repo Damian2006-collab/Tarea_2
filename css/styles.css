@@ -219,6 +219,17 @@
     margin-inline: auto;
   }
 
+  /* El header es sticky y no tiene altura fija — este valor cubre el peor
+     caso (header en dos líneas en pantallas angostas) para que un salto a
+     #contacto/#testimonios/etc. no quede tapado debajo de él. */
+  #inicio,
+  #menu,
+  #nosotros,
+  #testimonios,
+  #contacto {
+    scroll-margin-top: 96px;
+  }
+
   /* --- Header --- */
   .site-header {
     border-bottom: 1px solid var(--color-border);
