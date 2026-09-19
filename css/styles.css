@@ -58,7 +58,7 @@
 
   [data-theme="dark"] .site-header,
   [data-theme="dark"] .main-nav {
-    background: rgba(27, 20, 16, 0.72);
+    background: rgba(27, 20, 16, 0.5);
   }
 
   [data-theme="dark"] .nav-pill {
@@ -247,9 +247,9 @@
   /* --- Header --- */
   .site-header {
     border-bottom: 1px solid var(--color-border);
-    background: rgba(255, 250, 243, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(255, 250, 243, 0.5);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     position: sticky;
     top: 0;
     z-index: 50;
@@ -1174,9 +1174,9 @@
     top: 100%;
     left: 0;
     right: 0;
-    background: rgba(255, 250, 243, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(255, 250, 243, 0.5);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--color-border);
     display: none;
     box-shadow: var(--shadow);
